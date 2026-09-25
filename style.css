@@ -1,0 +1,179 @@
+        /* ===== ANIMATED THEME ===== */
+        body.animated-theme {
+            --line: rgba(var(--primary-rgb), 0.3);
+        }
+
+        /* بکگراند متحرک با چند لایه رنگی مستقل */
+        body.animated-theme::before {
+            background:
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-rgb), 0.18) 0%, transparent 35%),
+                radial-gradient(circle at 80% 20%, rgba(var(--secondary-rgb), 0.16) 0%, transparent 35%),
+                radial-gradient(circle at 50% 70%, rgba(var(--accent-rgb), 0.14) 0%, transparent 40%),
+                radial-gradient(circle at 30% 90%, rgba(var(--primary-rgb), 0.12) 0%, transparent 35%),
+                radial-gradient(circle at 90% 80%, rgba(var(--secondary-rgb), 0.12) 0%, transparent 35%);
+            background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 200% 200%;
+            animation:
+                bgFloat 25s ease-in-out infinite alternate,
+                bgShift1 14s ease-in-out infinite,
+                bgShift2 18s ease-in-out infinite reverse;
+        }
+
+        @keyframes bgShift1 {
+            0%, 100% { background-position: 0% 0%, 100% 0%, 50% 50%, 0% 100%, 100% 100%; }
+            50% { background-position: 30% 40%, 70% 30%, 20% 80%, 60% 20%, 40% 60%; }
+        }
+        @keyframes bgShift2 {
+            0%, 100% { background-position: 100% 50%, 0% 50%, 50% 0%, 100% 80%, 0% 20%; }
+            50% { background-position: 20% 20%, 80% 80%, 60% 30%, 10% 40%, 90% 90%; }
+        }
+
+        /* دکمهها با گرادیان متحرک */
+        body.animated-theme .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 300% 300%;
+            animation: btnGradientShift 3s ease infinite;
+        }
+
+        /* navbar با border متحرک */
+        body.animated-theme .navbar {
+            border: 2px solid transparent;
+            background-image:
+                linear-gradient(var(--bg-1), var(--bg-1)),
+                linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            background-size: 100% 100%, 300% 100%;
+            animation: borderShift 4s linear infinite;
+        }
+
+        @keyframes borderShift {
+            0% { background-position: 0% 0%, 0% 50%; }
+            100% { background-position: 0% 0%, 300% 50%; }
+        }
+
+        /* متنهای متحرک */
+        body.animated-theme .stat-box .number,
+        body.animated-theme .profile-info .name,
+        body.animated-theme .loader-text,
+        body.animated-theme .modal-box .title {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGradientShift 4s ease infinite;
+        }
+
+        /* کارتها با border متحرک */
+        body.animated-theme .stream-card,
+        body.animated-theme .rank-card,
+        body.animated-theme .stat-box,
+        body.animated-theme .clip-random-item,
+        body.animated-theme .dash-section,
+        body.animated-theme .settings-card,
+        body.animated-theme .ticket-item {
+            border: 2px solid transparent;
+            background-image:
+                linear-gradient(var(--bg-1), var(--bg-1)),
+                linear-gradient(135deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            background-size: 100% 100%, 300% 300%;
+            animation: borderShift 5s ease infinite;
+        }
+
+        body.light-theme.animated-theme .stream-card,
+        body.light-theme.animated-theme .rank-card,
+        body.light-theme.animated-theme .stat-box,
+        body.light-theme.animated-theme .clip-random-item,
+        body.light-theme.animated-theme .dash-section,
+        body.light-theme.animated-theme .settings-card,
+        body.light-theme.animated-theme .ticket-item {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+                linear-gradient(135deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+        }
+
+        /* کرسر موس متحرک */
+        body.animated-theme .cursor-ring--outer {
+            border-color: var(--primary);
+            animation: cursorPulse 2s ease-in-out infinite;
+        }
+        body.animated-theme .cursor-ring--inner {
+            border-color: var(--secondary);
+            animation: cursorPulse 2s ease-in-out infinite 0.3s;
+        }
+        body.animated-theme .cursor-ring--dot {
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--primary), 0 0 35px var(--secondary);
+            animation: cursorPulse 2s ease-in-out infinite 0.6s;
+        }
+
+        @keyframes cursorPulse {
+            0%, 100% {
+                border-color: var(--primary);
+                box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.5);
+            }
+            33% {
+                border-color: var(--secondary);
+                box-shadow: 0 0 20px rgba(var(--secondary-rgb), 0.5);
+            }
+            66% {
+                border-color: var(--accent);
+                box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.5);
+            }
+        }
+
+        /* اسکرولبار متحرک */
+        body.animated-theme ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 100% 300%;
+            animation: scrollbarShift 3s linear infinite;
+        }
+        @keyframes scrollbarShift {
+            0% { background-position: 50% 0%; }
+            100% { background-position: 50% 300%; }
+        }
+
+        /* اسلایدر و تب فعال */
+        body.animated-theme .home-tabs button.active,
+        body.animated-theme .ticket-tabs button.active,
+        body.animated-theme .profile-tabs button.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-size: 200% 200%;
+            animation: btnGradientShift 3s ease infinite;
+        }
+
+        body.animated-theme .home-tabs button::after,
+        body.animated-theme .ticket-tabs button::after,
+        body.animated-theme .profile-tabs button::after {
+            background: var(--secondary);
+        }
+
+        /* glow ها */
+        body.animated-theme .stream-card:hover,
+        body.animated-theme .rank-card:hover,
+        body.animated-theme .clip-random-item:hover,
+        body.animated-theme .stat-box:hover {
+            box-shadow:
+                0 0 30px rgba(var(--primary-rgb), 0.4),
+                0 0 60px rgba(var(--secondary-rgb), 0.3),
+                0 0 90px rgba(var(--accent-rgb), 0.2);
+        }
+
+        @keyframes btnGradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes textGradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes themeShift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(1.5%, -1.5%) scale(1.03); }
+            50% { transform: translate(-1%, 1%) scale(1.02); }
+            75% { transform: translate(1%, -0.5%) scale(1.04); }
+        }
